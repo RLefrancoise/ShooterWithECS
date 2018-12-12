@@ -6,14 +6,17 @@ using UnityEngine;
 namespace Systems
 {
     /// <summary>
-    /// Ship weapon system
+    /// Weapon shooting system template
     /// </summary>
-    public class WeaponShootingSystem : JobComponentSystem
+    public abstract class WeaponShootingSystem<TBarrier, TWeapon> : JobComponentSystem where TBarrier : BarrierSystem where TWeapon : struct, IComponentData
     {
+        /// <summary>
+        /// Weapon shooting job
+        /// </summary>
         private struct WeaponShootingJob : IJobParallelFor
         {
             [ReadOnly] public EntityArray EntityArray;
-            [ReadOnly] public ComponentDataArray<Weapon> Weapons;
+            [ReadOnly] public ComponentDataArray<TWeapon> Weapons;
             public EntityCommandBuffer.Concurrent EntityCommandBuffer;
             public float CurrentTime;
             
@@ -25,34 +28,42 @@ namespace Systems
                 });
             }
         }
-        
-        private struct Data
+
+        /// <summary>
+        /// Group of component to use
+        /// </summary>
+        protected abstract ComponentGroup Group { get; set; }
+        /// <summary>
+        /// Barrier to use
+        /// </summary>
+        protected abstract TBarrier Barrier { get; }
+
+        /// <summary>
+        /// Can shoot ?
+        /// </summary>
+        protected abstract bool CanShoot { get; }
+
+        protected override void OnCreateManager()
         {
-            public readonly int Length;
-            public EntityArray Entities;
-            public ComponentDataArray<Weapon> Weapons;
-            public SubtractiveComponent<Firing> Firings;
+            Group = GetComponentGroup(
+                ComponentType.ReadOnly<TWeapon>(),
+                ComponentType.Subtractive<Firing>());
         }
 
-        [Inject] private Data _data;
-        [Inject] private WeaponShootingBarrier _barrier;
-        
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
-            if (Input.GetButton("Fire1"))
+            if (CanShoot)
             {
                 return new WeaponShootingJob
                 {
-                    EntityArray = _data.Entities,
-                    Weapons = _data.Weapons,
-                    EntityCommandBuffer = _barrier.CreateCommandBuffer().ToConcurrent(),
+                    EntityArray = Group.GetEntityArray(),
+                    Weapons = Group.GetComponentDataArray<TWeapon>(),
+                    EntityCommandBuffer = Barrier.CreateCommandBuffer().ToConcurrent(),
                     CurrentTime = Time.time
-                }.Schedule(_data.Length, 64, inputDeps);
+                }.Schedule(Group.CalculateLength(), 64, inputDeps);
             }
 
             return base.OnUpdate(inputDeps);
         }
     }
-    
-    public class WeaponShootingBarrier : BarrierSystem {}
 }

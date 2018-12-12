@@ -60,8 +60,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    FireSpeed: 10
-    FireRate: 0.2
+    FireSpeed: 5
+    FireRate: 2
     BulletLifeTime: 5
 --- !u!114 &610359904
 MonoBehaviour:
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   Fire: 0
-  TimeBetweenFire: 0
+  TimeBetweenFire: 2
   LastFireTime: 0
 --- !u!1 &510215653332099474
 GameObject:
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    FireSpeed: 10
-    FireRate: 0.2
+    FireSpeed: 5
+    FireRate: 2
     BulletLifeTime: 5
 --- !u!114 &8287037628697351848
 MonoBehaviour:
@@ -485,8 +485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    FireSpeed: 10
-    FireRate: 0.2
+    FireSpeed: 5
+    FireRate: 2
     BulletLifeTime: 5
 --- !u!114 &8028988811640925085
 MonoBehaviour:
@@ -596,8 +596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    FireSpeed: 10
-    FireRate: 0.2
+    FireSpeed: 5
+    FireRate: 2
     BulletLifeTime: 5
 --- !u!114 &624376190040917894
 MonoBehaviour:
@@ -742,8 +742,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    FireSpeed: 10
-    FireRate: 0.2
+    FireSpeed: 5
+    FireRate: 2
     BulletLifeTime: 5
 --- !u!114 &5491905729227151795
 MonoBehaviour:
