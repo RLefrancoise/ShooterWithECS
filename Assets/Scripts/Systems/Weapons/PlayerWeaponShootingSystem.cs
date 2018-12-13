@@ -1,5 +1,5 @@
 ﻿using Unity.Entities;
-using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Systems
 {
@@ -9,7 +9,7 @@ namespace Systems
 
         protected override ComponentGroup Group { get; set; }
         protected override PlayerWeaponShootingBarrier Barrier => _barrier;
-        protected override bool CanShoot => Input.GetButton("Fire1");
+        protected override bool CanShoot => CrossPlatformInputManager.GetButton("Fire1");
         protected override ComponentType WeaponKind => ComponentType.ReadOnly<PlayerWeapon>();
     }
 

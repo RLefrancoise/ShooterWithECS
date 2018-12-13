@@ -1,6 +1,7 @@
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityQuery;
 
 namespace Systems
 {
@@ -23,13 +24,20 @@ namespace Systems
                 
                 entity.Rigidbody.MovePosition(movePosition);
 
+                //Player too far from the left or right
+                if (Mathf.Abs(entity.Transform.position.x) > Bootstrap.LevelLimits.extents.x)
+                {
+                    entity.Transform.position = entity.Transform.position.WithX(
+                        Bootstrap.LevelLimits.extents.x * (entity.Transform.position.x >= 0f ? 1f : -1f));
+                }
+
                 entity.Transform.localRotation = Quaternion.Euler(
                     Vector3.Slerp(
                         Vector3.zero, 
                         new Vector3(
                             0f,
                             0f,
-                            -10f * movementVector.normalized.x),
+                            -1f * entity.Ship.TiltAngle * movementVector.normalized.x),
                         Mathf.Abs(entity.InputComponent.Horizontal)));
             }
         }
