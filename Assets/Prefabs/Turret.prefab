@@ -1838,7 +1838,7 @@ GameObject:
   - component: {fileID: 3853422823159679349}
   - component: {fileID: 4277776374554050101}
   - component: {fileID: 4143775627078367505}
-  - component: {fileID: 5697229738235209611}
+  - component: {fileID: 6187102345301947916}
   m_Layer: 0
   m_Name: CannonDummy
   m_TagString: Untagged
@@ -1920,7 +1920,7 @@ MonoBehaviour:
         y: -0
         z: -0
         w: 1
---- !u!114 &5697229738235209611
+--- !u!114 &6187102345301947916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1929,10 +1929,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5711465965920322825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 647d7038641ccda4296dce2a0a111271, type: 3}
+  m_Script: {fileID: 11500000, guid: 4be2b4c3e21e4513969dacd4dde3ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    FireSpeed: 3
-    FireRate: 1
-    BulletLifeTime: 5
+    FireSpeed: 5
+    FireRate: 0.5
+    BulletLifeTime: 10
+    Kind: 1
