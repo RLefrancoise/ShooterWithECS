@@ -19,8 +19,18 @@ namespace Systems
             {
                 //Create bullet from archetype
                 EntityCommandBuffer.CreateEntity(index/*, Bootstrap.BulletArchetype*/);
+
                 //Set renderer of bullet
-                EntityCommandBuffer.AddSharedComponent(index, Bootstrap.BulletRenderer);
+                switch (Weapons[index].Kind)
+                {
+                    case WeaponKind.Player:
+                        EntityCommandBuffer.AddSharedComponent(index, Bootstrap.BulletRenderer);
+                        break;
+                    case WeaponKind.Turret:
+                        EntityCommandBuffer.AddSharedComponent(index, Bootstrap.TurretBulletRenderer);
+                        break;
+                }
+                
                 //Set bullet
                 EntityCommandBuffer.AddComponent(index, new Bullet {LifeTime = Weapons[index].BulletLifeTime});
                 //Set position
