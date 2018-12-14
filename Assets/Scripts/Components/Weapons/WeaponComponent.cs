@@ -13,6 +13,7 @@ public struct Weapon : IComponentData
     public float FireSpeed;
     public float FireRate;
     public float BulletLifeTime;
+    public float Range;
     public WeaponKind Kind;
 }
 

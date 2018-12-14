@@ -1933,7 +1933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    FireSpeed: 5
+    FireSpeed: 10
     FireRate: 0.5
     BulletLifeTime: 10
     Kind: 1
