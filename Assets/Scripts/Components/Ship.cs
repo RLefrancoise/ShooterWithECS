@@ -7,5 +7,6 @@ public class Ship : MonoBehaviour
 {
     public float Speed;
     public float TiltAngle;
-    public ThrusterComponent[] Thrusters;
+    public ThrusterComponent[] ForwardThrusters;
+    public ThrusterComponent[] BackThrusters;
 }
