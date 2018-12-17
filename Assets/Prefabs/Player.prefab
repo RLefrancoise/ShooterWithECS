@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 114266789962345628}
   - component: {fileID: 114965497490425828}
   - component: {fileID: 114597578372337250}
+  - component: {fileID: 3358990981442422767}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -274,6 +275,24 @@ MonoBehaviour:
   - {fileID: 8890054995186218486}
   - {fileID: 1180444736239535707}
   - {fileID: 3040807613263271429}
+--- !u!114 &3358990981442422767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975525094370160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312dc4b76c8e4e4198e675f3f9e3e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviousPosition: {x: 0, y: 0, z: 0}
+  PreviousRotation: {x: 0, y: 0, z: 0, w: 0}
+  HasPreviousPosition: 0
+  HasPreviousRotation: 0
+  Velocity: {x: 0, y: 0, z: 0}
+  AngularVelocity: {x: 0, y: 0, z: 0}
 --- !u!114 &44295882470692985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,6 +1082,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3008759040307298955}
     m_Modifications:
+    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Name
+      value: AfterburnerBack2
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.2
@@ -1119,27 +1142,27 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9999998
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
-      propertyPath: m_Name
-      value: AfterburnerBack2
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6091bd69dfbc960409d15aa49b4ba459, type: 2}
     m_RemovedComponents:
     - {fileID: 11400000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
     - {fileID: 13500000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
---- !u!4 &186034986641110805 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821,
-    type: 3}
-  m_PrefabInstance: {fileID: 186034986641501585}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &186034986641402677 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821,
+    type: 3}
+  m_PrefabInstance: {fileID: 186034986641501585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &186034986641110805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821,
     type: 3}
   m_PrefabInstance: {fileID: 186034986641501585}
   m_PrefabAsset: {fileID: 0}
@@ -1150,6 +1173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3008759040307298955}
     m_Modifications:
+    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Name
+      value: AfterburnerBack1
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.2
@@ -1206,14 +1233,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9999998
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
-      propertyPath: m_Name
-      value: AfterburnerBack1
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6091bd69dfbc960409d15aa49b4ba459, type: 2}
     m_RemovedComponents:
     - {fileID: 11400000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
     - {fileID: 13500000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
@@ -1237,6 +1264,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3008759040307298955}
     m_Modifications:
+    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Name
+      value: Afterburner
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1281,14 +1312,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
-      propertyPath: m_Name
-      value: Afterburner
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6091bd69dfbc960409d15aa49b4ba459, type: 2}
     - target: {fileID: 11400000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: force
       value: 100
@@ -1297,15 +1328,15 @@ PrefabInstance:
     - {fileID: 11400000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
     - {fileID: 13500000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
---- !u!4 &1773764264134406300 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821,
-    type: 3}
-  m_PrefabInstance: {fileID: 1773764264134535704}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1773764264134503612 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821,
+    type: 3}
+  m_PrefabInstance: {fileID: 1773764264134535704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1773764264134406300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821,
     type: 3}
   m_PrefabInstance: {fileID: 1773764264134535704}
   m_PrefabAsset: {fileID: 0}
@@ -1316,6 +1347,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3008759040307298955}
     m_Modifications:
+    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Name
+      value: Afterburner (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.644
@@ -1372,27 +1407,27 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9999998
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
-      propertyPath: m_Name
-      value: Afterburner (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6091bd69dfbc960409d15aa49b4ba459, type: 2}
     m_RemovedComponents:
     - {fileID: 11400000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
     - {fileID: 13500000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
---- !u!4 &4914702957597835457 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821,
-    type: 3}
-  m_PrefabInstance: {fileID: 4914702957597448773}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4914702957597547745 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821,
+    type: 3}
+  m_PrefabInstance: {fileID: 4914702957597448773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4914702957597835457 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821,
     type: 3}
   m_PrefabInstance: {fileID: 4914702957597448773}
   m_PrefabAsset: {fileID: 0}
@@ -1403,6 +1438,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3008759040307298955}
     m_Modifications:
+    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Name
+      value: Afterburner (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.644
@@ -1459,27 +1498,27 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9999998
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
-      propertyPath: m_Name
-      value: Afterburner (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6091bd69dfbc960409d15aa49b4ba459, type: 2}
     m_RemovedComponents:
     - {fileID: 11400000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
     - {fileID: 13500000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
---- !u!4 &8430794408807034729 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821,
-    type: 3}
-  m_PrefabInstance: {fileID: 8430794408807167469}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8430794408807199561 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821,
+    type: 3}
+  m_PrefabInstance: {fileID: 8430794408807167469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8430794408807034729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821,
     type: 3}
   m_PrefabInstance: {fileID: 8430794408807167469}
   m_PrefabAsset: {fileID: 0}
@@ -1490,6 +1529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3008759040307298955}
     m_Modifications:
+    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Name
+      value: AfterburnerBack4
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6
@@ -1546,14 +1589,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9999998
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
-      propertyPath: m_Name
-      value: AfterburnerBack4
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6091bd69dfbc960409d15aa49b4ba459, type: 2}
     m_RemovedComponents:
     - {fileID: 11400000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
     - {fileID: 13500000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
@@ -1577,6 +1620,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3008759040307298955}
     m_Modifications:
+    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Name
+      value: AfterburnerBack3
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6
@@ -1633,14 +1680,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9999998
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
-      propertyPath: m_Name
-      value: AfterburnerBack3
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6091bd69dfbc960409d15aa49b4ba459, type: 2}
     m_RemovedComponents:
     - {fileID: 11400000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}
     - {fileID: 13500000, guid: d8c41be67f41aa545ae053b0b927f821, type: 3}

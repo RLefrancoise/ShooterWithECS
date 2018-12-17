@@ -1,57 +1,54 @@
-﻿using Unity.Burst;
-using Unity.Collections;
-using Unity.Entities;
-using Unity.Jobs;
-using Unity.Mathematics;
+﻿using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
 
 namespace Systems
 {
-    [UpdateAfter(typeof(CopyTransformFromGameObjectSystem))]
-    public class MovementDataSystem : JobComponentSystem
+    [UpdateAfter(typeof(CopyInitialTransformFromGameObject))]
+    public class MovementDataSystem : ComponentSystem
     {
-        [BurstCompile]
-        private struct MovementDataJob : IJobProcessComponentData<Position, Rotation, MovementData>
+        private struct Filter
         {
-            public float DeltaTime;
+            public Transform Transform;
+            public MovementDataComponent MovementData;
+        }
 
-            public void Execute([ReadOnly] ref Position position, [ReadOnly] ref Rotation rotation, ref MovementData movementData)
+        protected override void OnUpdate()
+        {
+            float dt = Time.deltaTime;
+
+            foreach (var entity in GetEntities<Filter>())
             {
+                var movementData = entity.MovementData;
+                var position = entity.Transform.position;
+                var rotation = entity.Transform.rotation;
+
                 //Speed
-                if (movementData.HasPreviousPosition == 0)
+                if (!movementData.HasPreviousPosition)
                 {
                     movementData.PreviousPosition = position;
-                    movementData.HasPreviousPosition = 1;
+                    movementData.HasPreviousPosition = true;
                 }
                 else
                 {
-                    var speed = position.Value - movementData.PreviousPosition.Value;
-                    movementData.Velocity = speed / DeltaTime;
+                    var speed = position - movementData.PreviousPosition;
+                    movementData.Velocity = speed / dt;
                     movementData.PreviousPosition = position;
                 }
 
                 //Angular speed
-                if (movementData.HasPreviousRotation == 0)
+                if (!movementData.HasPreviousRotation)
                 {
                     movementData.PreviousRotation = rotation;
-                    movementData.HasPreviousRotation = 1;
+                    movementData.HasPreviousRotation = true;
                 }
                 else
                 {
-                    var angularSpeed = rotation.Value.ToStandardQuaternion().eulerAngles - movementData.PreviousRotation.Value.ToStandardQuaternion().eulerAngles;
-                    movementData.AngularVelocity = new float3(angularSpeed) / DeltaTime;
+                    var angularSpeed = rotation.eulerAngles - movementData.PreviousRotation.eulerAngles;
+                    movementData.AngularVelocity = angularSpeed / dt;
                     movementData.PreviousRotation = rotation;
                 }
             }
-        }
-
-        protected override JobHandle OnUpdate(JobHandle inputDeps)
-        {
-            return new MovementDataJob
-            {
-                DeltaTime = Time.deltaTime
-            }.Schedule(this, inputDeps);
         }
     }
 }

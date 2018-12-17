@@ -1,22 +1,13 @@
-﻿using System;
-using Unity.Entities;
-using Unity.Mathematics;
-using Unity.Transforms;
+﻿using UnityEngine;
 
-[Serializable]
-public struct MovementData : IComponentData
+public class MovementDataComponent : MonoBehaviour
 {
-    public Position PreviousPosition;
-    public Rotation PreviousRotation;
+    public Vector3 PreviousPosition;
+    public Quaternion PreviousRotation;
 
-    public int HasPreviousPosition;
-    public int HasPreviousRotation;
+    public bool HasPreviousPosition;
+    public bool HasPreviousRotation;
 
-    public float3 Velocity;
-    public float3 AngularVelocity;
+    public Vector3 Velocity;
+    public Vector3 AngularVelocity;
 }
-
-public class MovementDataComponent : ComponentDataWrapper<MovementData>
-{
-}
-

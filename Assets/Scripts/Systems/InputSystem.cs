@@ -25,7 +25,7 @@ namespace Systems
                 entity.InputComponent.Horizontal = horizontal;
                 entity.InputComponent.Vertical = vertical;
 
-                foreach (var thruster in entity.Ship.ForwardThrusters)
+                /*foreach (var thruster in entity.Ship.ForwardThrusters)
                 {
                     thruster.Power = vertical > 0f ? vertical : 0f;
                 }
@@ -33,7 +33,7 @@ namespace Systems
                 foreach (var thruster in entity.Ship.BackThrusters)
                 {
                     thruster.Power = vertical < 0f ? Mathf.Abs(vertical) : 0f;
-                }
+                }*/
             }
         }
     }

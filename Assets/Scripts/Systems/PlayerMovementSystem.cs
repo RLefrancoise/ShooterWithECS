@@ -1,16 +1,16 @@
 using Unity.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityQuery;
 
 namespace Systems
 {
+    [UpdateBefore(typeof(MovementDataSystem))]
+    [UpdateAfter(typeof(InputSystem))]
     public class PlayerMovementSystem : ComponentSystem
     {
         private struct Filter
         {
             public InputComponent InputComponent;
-            public Rigidbody Rigidbody;
             public Transform Transform;
             public Ship Ship;
         }
@@ -20,9 +20,9 @@ namespace Systems
             foreach (var entity in GetEntities<Filter>())
             {
                 var movementVector = new Vector3(entity.InputComponent.Horizontal, 0f, entity.InputComponent.Vertical);
-                var movePosition = entity.Rigidbody.position + movementVector.normalized * entity.Ship.Speed * Time.deltaTime;
+                var movePosition = movementVector.normalized * entity.Ship.Speed * Time.deltaTime;
                 
-                entity.Rigidbody.MovePosition(movePosition);
+                entity.Transform.Translate(movePosition, Space.World);
 
                 //Player too far from the left or right
                 if (Mathf.Abs(entity.Transform.position.x) > Bootstrap.LevelLimits.extents.x)
