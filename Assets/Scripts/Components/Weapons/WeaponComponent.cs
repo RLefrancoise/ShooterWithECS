@@ -4,7 +4,8 @@ using Unity.Entities;
 public enum WeaponKind
 {
     Player,
-    Turret
+    Turret,
+    EnemyShip
 }
 
 [Serializable]

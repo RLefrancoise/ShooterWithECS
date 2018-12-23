@@ -16,6 +16,9 @@ namespace Systems
             foreach (var entity in GetEntities<Filter>())
             {
                 var powerRatio = entity.MovementData.Velocity.z / entity.Ship.Speed;
+                powerRatio *= Vector3.SignedAngle(entity.Ship.transform.forward, Vector3.forward, Vector3.up) >= 180f
+                    ? -1f
+                    : 1f;
                 if (powerRatio > 1f) powerRatio = 1f;
                 else if (powerRatio < -1f) powerRatio = -1f;
 

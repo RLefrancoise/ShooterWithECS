@@ -5,25 +5,25 @@ using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
 {
+    //Archetypes
     public static EntityArchetype BulletArchetype;
-        
-    public static MeshInstanceRenderer BulletRenderer;
-    public static MeshInstanceRenderer TurretBulletRenderer;
 
-    public static Bounds LevelLimits;
-
-    [SerializeField]
-    private MeshInstanceRenderer _bulletRenderer;
-    [SerializeField]
-    private MeshInstanceRenderer _turretBulletRenderer;
-
+    //Level
     [SerializeField]
     private Bounds _levelLimits;
+    public static Bounds LevelLimits;
+
+    //Bullets
+    [SerializeField]
+    private BulletData _playerBulletData;
+    [SerializeField]
+    private BulletData _turretBulletData;
+
+    public static BulletData PlayerBulletData;
+    public static BulletData TurretBulletData;
 
     private void Awake()
     {
-        BulletRenderer = _bulletRenderer;
-        TurretBulletRenderer = _turretBulletRenderer;
         LevelLimits = _levelLimits;
 
         BulletArchetype = World.Active.GetOrCreateManager<EntityManager>().CreateArchetype(
@@ -34,5 +34,9 @@ public class Bootstrap : MonoBehaviour
             ComponentType.Create<MeshInstanceRenderer>(),
             ComponentType.Create<MoveForward>(),
             ComponentType.Create<MoveSpeed>());
+
+        //Bullets
+        PlayerBulletData = _playerBulletData;
+        TurretBulletData = _turretBulletData;
     }
 }

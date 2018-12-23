@@ -18,31 +18,31 @@ namespace Systems
             public void Execute(int index)
             {
                 //Create bullet from archetype
-                EntityCommandBuffer.CreateEntity(index/*, Bootstrap.BulletArchetype*/);
+                EntityCommandBuffer.CreateEntity(index, Bootstrap.BulletArchetype);
 
                 //Set renderer of bullet
                 switch (Weapons[index].Kind)
                 {
                     case WeaponKind.Player:
-                        EntityCommandBuffer.AddSharedComponent(index, Bootstrap.BulletRenderer);
+                        EntityCommandBuffer.SetSharedComponent(index, Bootstrap.PlayerBulletData.Renderer);
                         break;
                     case WeaponKind.Turret:
-                        EntityCommandBuffer.AddSharedComponent(index, Bootstrap.TurretBulletRenderer);
+                        EntityCommandBuffer.SetSharedComponent(index, Bootstrap.TurretBulletData.Renderer);
                         break;
                 }
                 
                 //Set bullet
-                EntityCommandBuffer.AddComponent(index, new Bullet {LifeTime = Weapons[index].BulletLifeTime});
+                EntityCommandBuffer.SetComponent(index, new Bullet {LifeTime = Weapons[index].BulletLifeTime});
                 //Set position
-                EntityCommandBuffer.AddComponent(index, Positions[index]);
+                EntityCommandBuffer.SetComponent(index, Positions[index]);
                 //Set rotation
-                EntityCommandBuffer.AddComponent(index, Rotations[index]);
+                EntityCommandBuffer.SetComponent(index, Rotations[index]);
                 //Set scale
-                EntityCommandBuffer.AddComponent(index, new Scale {Value = new float3(0.1f)});
+                EntityCommandBuffer.SetComponent(index, new Scale {Value = new float3(0.1f)});
                 //Set move forward
-                EntityCommandBuffer.AddSharedComponent(index, new MoveForward());
+                EntityCommandBuffer.SetSharedComponent(index, new MoveForward());
                 //Set move speed
-                EntityCommandBuffer.AddComponent(index, new MoveSpeed {Speed = Weapons[index].FireSpeed});
+                EntityCommandBuffer.SetComponent(index, new MoveSpeed {Speed = Weapons[index].FireSpeed});
             }
         }
 

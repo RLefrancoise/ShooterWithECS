@@ -43,18 +43,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdece517a6734b85b0e15d4ee886bd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletRenderer:
-    mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-    material: {fileID: 2100000, guid: ef3bc254c85443f40940970322af8674, type: 2}
-    subMesh: 0
-    castShadows: 0
-    receiveShadows: 0
-  _turretBulletRenderer:
-    mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-    material: {fileID: 2100000, guid: 92f27d162a92a6648bc6ef01579fe603, type: 2}
-    subMesh: 0
-    castShadows: 0
-    receiveShadows: 0
   _levelLimits:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 10, y: 0, z: 0}
+    m_Extent: {x: 10, y: 0, z: 50}
+  _playerBulletData:
+    Renderer:
+      mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+      material: {fileID: 2100000, guid: ef3bc254c85443f40940970322af8674, type: 2}
+      subMesh: 0
+      castShadows: 0
+      receiveShadows: 0
+    Radius: 0
+  _turretBulletData:
+    Renderer:
+      mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+      material: {fileID: 2100000, guid: 92f27d162a92a6648bc6ef01579fe603, type: 2}
+      subMesh: 0
+      castShadows: 0
+      receiveShadows: 0
+    Radius: 0
