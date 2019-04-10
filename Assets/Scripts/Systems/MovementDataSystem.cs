@@ -43,9 +43,11 @@ namespace Systems
                     movementData.HasPreviousRotation = true;
                 }
                 else
-                {
-                    var angularSpeed = rotation.eulerAngles - movementData.PreviousRotation.eulerAngles;
-                    movementData.AngularVelocity = angularSpeed / dt;
+                {   
+                    movementData.RotationDelta = rotation * Quaternion.Inverse(movementData.PreviousRotation);
+                    movementData.RotationDelta.ToAngleAxis(out var angle, out var axis);
+                    movementData.AngularVelocity = axis * angle * (1.0f / Time.deltaTime);
+                    
                     movementData.PreviousRotation = rotation;
                 }
             }
