@@ -5,6 +5,7 @@ namespace Components
     [RequireComponent(typeof(ParticleSystem))]
     public class ThrusterComponent : MonoBehaviour
     {
+        [HideInInspector]
         public bool IsInitialized;
 
         public float OriginalStartSize;
