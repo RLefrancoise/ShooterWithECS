@@ -4,6 +4,6 @@ using Unity.Rendering;
 [Serializable]
 public class BulletData
 {
-    public MeshInstanceRenderer Renderer;
+    public RenderMesh Renderer;
     public float Radius;
 }

@@ -1,6 +1,6 @@
-using Unity.Entities;
+using UnityEngine;
 
-public struct Firing : IComponentData
+public class Firing : MonoBehaviour
 {
     public float FiredAt;
 }

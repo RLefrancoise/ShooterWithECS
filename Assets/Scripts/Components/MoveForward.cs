@@ -1,5 +1,5 @@
-using Unity.Entities;
+using UnityEngine;
 
-public struct MoveForward : ISharedComponentData
+public class MoveForward : MonoBehaviour
 {    
 }

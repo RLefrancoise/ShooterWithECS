@@ -1,12 +1,6 @@
-using System;
-using Unity.Entities;
+using UnityEngine;
 
-[Serializable]
-public struct Bullet : IComponentData
+public class BulletComponent : MonoBehaviour
 {
     public float LifeTime;
-}
-
-public class BulletComponent : ComponentDataWrapper<Bullet>
-{
 }

@@ -2,7 +2,7 @@
 
 namespace Systems
 {
-    public class SetTurretWeaponKindSystem : SetWeaponKindSystem<TurretWeapon, SetTurretWeaponKindBarrier>
+    /*public class SetTurretWeaponKindSystem : SetWeaponKindSystem<TurretWeapon, SetTurretWeaponKindBarrier>
     {
         [Inject] private SetTurretWeaponKindBarrier _barrier;
 
@@ -12,5 +12,5 @@ namespace Systems
 
     public class SetTurretWeaponKindBarrier : BarrierSystem
     {
-    }
+    }*/
 }

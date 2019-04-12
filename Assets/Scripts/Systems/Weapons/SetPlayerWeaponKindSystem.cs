@@ -2,7 +2,7 @@
 
 namespace Systems
 {
-    public class SetPlayerWeaponKindSystem : SetWeaponKindSystem<PlayerWeapon, SetPlayerWeaponKindBarrier>
+    /*public class SetPlayerWeaponKindSystem : SetWeaponKindSystem<PlayerWeapon, SetPlayerWeaponKindBarrier>
     {
         [Inject] private SetPlayerWeaponKindBarrier _barrier;
 
@@ -12,5 +12,5 @@ namespace Systems
 
     public class SetPlayerWeaponKindBarrier : BarrierSystem
     {
-    }
+    }*/
 }

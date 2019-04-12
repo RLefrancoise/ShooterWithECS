@@ -4,7 +4,7 @@ using Unity.Jobs;
 using UnityEngine;
 
 namespace Systems
-{
+{/*
     /// <summary>
     /// Weapon shooting system template
     /// </summary>
@@ -71,5 +71,5 @@ namespace Systems
 
             return base.OnUpdate(inputDeps);
         }
-    }
+    }*/
 }

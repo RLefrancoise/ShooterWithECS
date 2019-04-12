@@ -2,7 +2,6 @@ using System;
 using Components;
 using UnityEngine;
 
-[Serializable]
 public class Ship : MonoBehaviour
 {
     public float Life;

@@ -2,7 +2,7 @@
 
 namespace Systems
 {
-    public class TurretShootingSystem : WeaponShootingSystem<TurretShootingBarrier>
+    /*public class TurretShootingSystem : WeaponShootingSystem<TurretShootingBarrier>
     {
         [Inject] private TurretShootingBarrier _barrier;
 
@@ -12,5 +12,5 @@ namespace Systems
         protected override ComponentType WeaponKind => ComponentType.ReadOnly<TurretWeapon>();
     }
 
-    public class TurretShootingBarrier : BarrierSystem { }
+    public class TurretShootingBarrier : BarrierSystem { }*/
 }

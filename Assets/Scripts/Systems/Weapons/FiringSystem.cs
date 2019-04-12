@@ -6,11 +6,12 @@ using Unity.Transforms;
 
 namespace Systems
 {
-    public class FiringSystem : JobComponentSystem
+    /*public class FiringSystem : JobComponentSystem
     {        
         private struct FiringJob : IJobParallelFor
         {
             public EntityCommandBuffer.Concurrent EntityCommandBuffer;
+            [ReadOnly] public EntityArray Entities;
             [ReadOnly] public ComponentDataArray<Weapon> Weapons;
             [ReadOnly] public ComponentDataArray<Position> Positions;
             [ReadOnly] public ComponentDataArray<Rotation> Rotations;
@@ -24,25 +25,25 @@ namespace Systems
                 switch (Weapons[index].Kind)
                 {
                     case WeaponKind.Player:
-                        EntityCommandBuffer.SetSharedComponent(index, Bootstrap.PlayerBulletData.Renderer);
+                        EntityCommandBuffer.SetSharedComponent(index, Entities[index], Bootstrap.PlayerBulletData.Renderer);
                         break;
                     case WeaponKind.Turret:
-                        EntityCommandBuffer.SetSharedComponent(index, Bootstrap.TurretBulletData.Renderer);
+                        EntityCommandBuffer.SetSharedComponent(index, Entities[index], Bootstrap.TurretBulletData.Renderer);
                         break;
                 }
                 
                 //Set bullet
-                EntityCommandBuffer.SetComponent(index, new Bullet {LifeTime = Weapons[index].BulletLifeTime});
+                EntityCommandBuffer.SetComponent(index, Entities[index], new Bullet {LifeTime = Weapons[index].BulletLifeTime});
                 //Set position
-                EntityCommandBuffer.SetComponent(index, Positions[index]);
+                EntityCommandBuffer.SetComponent(index, Entities[index], Positions[index]);
                 //Set rotation
-                EntityCommandBuffer.SetComponent(index, Rotations[index]);
+                EntityCommandBuffer.SetComponent(index, Entities[index], Rotations[index]);
                 //Set scale
-                EntityCommandBuffer.SetComponent(index, new Scale {Value = new float3(0.1f)});
+                EntityCommandBuffer.SetComponent(index, Entities[index], new Scale {Value = new float3(0.1f)});
                 //Set move forward
-                EntityCommandBuffer.SetSharedComponent(index, new MoveForward());
+                EntityCommandBuffer.SetSharedComponent(index, Entities[index], new MoveForward());
                 //Set move speed
-                EntityCommandBuffer.SetComponent(index, new MoveSpeed {Speed = Weapons[index].FireSpeed});
+                EntityCommandBuffer.SetComponent(index, Entities[index], new MoveSpeed {Speed = Weapons[index].FireSpeed});
             }
         }
 
@@ -65,6 +66,7 @@ namespace Systems
             return new FiringJob
             {
                 EntityCommandBuffer = _barrier.CreateCommandBuffer().ToConcurrent(),
+                Entities = _componentGroup.GetEntityArray(),
                 Weapons = _componentGroup.GetComponentDataArray<Weapon>(),
                 Positions = _componentGroup.GetComponentDataArray<Position>(),
                 Rotations = _componentGroup.GetComponentDataArray<Rotation>()
@@ -74,5 +76,5 @@ namespace Systems
 
     public class FiringBarrier : BarrierSystem
     {
-    }
+    }*/
 }

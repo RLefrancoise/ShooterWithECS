@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Systems
 {
-    public class BulletCleanupSystem : JobComponentSystem
+    /*public class BulletCleanupSystem : JobComponentSystem
     {
         private struct BulletCleanupJob : IJobParallelFor
         {
@@ -48,5 +48,5 @@ namespace Systems
 
     public class BulletCleanupBarrier : BarrierSystem
     {
-    }
+    }*/
 }

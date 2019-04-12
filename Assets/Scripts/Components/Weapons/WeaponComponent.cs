@@ -1,5 +1,4 @@
-using System;
-using Unity.Entities;
+using UnityEngine;
 
 public enum WeaponKind
 {
@@ -8,16 +7,12 @@ public enum WeaponKind
     EnemyShip
 }
 
-[Serializable]
-public struct Weapon : IComponentData
+public class WeaponComponent : MonoBehaviour
 {
+    public GameObject BulletPrefab;
     public float FireSpeed;
     public float FireRate;
     public float BulletLifeTime;
     public float Range;
     public WeaponKind Kind;
-}
-
-public class WeaponComponent : ComponentDataWrapper<Weapon>
-{
 }

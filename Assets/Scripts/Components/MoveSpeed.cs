@@ -1,8 +1,6 @@
-using System;
-using Unity.Entities;
+using UnityEngine;
 
-[Serializable]
-public struct MoveSpeed : IComponentData
+public class MoveSpeed : MonoBehaviour
 {
     public float Speed;
 }

@@ -4,23 +4,18 @@ namespace Systems
 {
     public class FollowTargetSystem : ComponentSystem
     {
-        private struct Filter
-        {
-            public FollowTargetComponent FollowTarget;
-        }
-
         protected override void OnUpdate()
         {
-            foreach (var entity in GetEntities<Filter>())
+            Entities.ForEach((FollowTargetComponent followTarget) =>
             {
-                var position = entity.FollowTarget.transform.position;
+                var position = followTarget.transform.position;
 
-                if (!entity.FollowTarget.FreezeX) position.x = entity.FollowTarget.Target.position.x;
-                if (!entity.FollowTarget.FreezeY) position.y = entity.FollowTarget.Target.position.y;
-                if (!entity.FollowTarget.FreezeZ) position.z = entity.FollowTarget.Target.position.z;
+                if (!followTarget.FreezeX) position.x = followTarget.Target.position.x;
+                if (!followTarget.FreezeY) position.y = followTarget.Target.position.y;
+                if (!followTarget.FreezeZ) position.z = followTarget.Target.position.z;
 
-                entity.FollowTarget.transform.position = position + entity.FollowTarget.Offset;
-            }
+                followTarget.transform.position = position + followTarget.Offset;
+            });
         }
     }
 }

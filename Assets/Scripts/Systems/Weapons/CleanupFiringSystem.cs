@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Systems
 {
-    public class CleanupFiringSystem : JobComponentSystem
+    /*public class CleanupFiringSystem : JobComponentSystem
     {
         private struct CleanupFiringJob : IJobParallelFor
         {
@@ -48,5 +48,5 @@ namespace Systems
 
     public class CleanupFiringBarrier : BarrierSystem
     {
-    }
+    }*/
 }

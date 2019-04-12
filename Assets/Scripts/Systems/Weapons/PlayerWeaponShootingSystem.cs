@@ -3,7 +3,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace Systems
 {
-    public class PlayerWeaponShootingSystem : WeaponShootingSystem<PlayerWeaponShootingBarrier>
+    /*public class PlayerWeaponShootingSystem : WeaponShootingSystem<PlayerWeaponShootingBarrier>
     {
         [Inject] private PlayerWeaponShootingBarrier _barrier;
 
@@ -13,5 +13,5 @@ namespace Systems
         protected override ComponentType WeaponKind => ComponentType.ReadOnly<PlayerWeapon>();
     }
 
-    public class PlayerWeaponShootingBarrier : BarrierSystem { }
+    public class PlayerWeaponShootingBarrier : BarrierSystem { }*/
 }

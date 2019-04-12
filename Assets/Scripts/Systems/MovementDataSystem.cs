@@ -4,24 +4,16 @@ using UnityEngine;
 
 namespace Systems
 {
-    [UpdateAfter(typeof(CopyInitialTransformFromGameObject))]
     public class MovementDataSystem : ComponentSystem
     {
-        private struct Filter
-        {
-            public Transform Transform;
-            public MovementDataComponent MovementData;
-        }
-
         protected override void OnUpdate()
         {
             float dt = Time.deltaTime;
 
-            foreach (var entity in GetEntities<Filter>())
+            Entities.ForEach((Transform transform, MovementDataComponent movementData) =>
             {
-                var movementData = entity.MovementData;
-                var position = entity.Transform.position;
-                var rotation = entity.Transform.rotation;
+                var position = transform.position;
+                var rotation = transform.rotation;
 
                 //Speed
                 if (!movementData.HasPreviousPosition)
@@ -43,14 +35,14 @@ namespace Systems
                     movementData.HasPreviousRotation = true;
                 }
                 else
-                {   
+                {
                     movementData.RotationDelta = rotation * Quaternion.Inverse(movementData.PreviousRotation);
                     movementData.RotationDelta.ToAngleAxis(out var angle, out var axis);
                     movementData.AngularVelocity = axis * angle * (1.0f / Time.deltaTime);
-                    
+
                     movementData.PreviousRotation = rotation;
                 }
-            }
+            });
         }
     }
 }
