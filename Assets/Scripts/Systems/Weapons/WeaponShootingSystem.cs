@@ -1,7 +1,11 @@
+using System;
+using Components;
+using Components.Weapons;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Systems
 {/*
@@ -72,4 +76,45 @@ namespace Systems
             return base.OnUpdate(inputDeps);
         }
     }*/
+
+    public class WeaponShootingSystem : ComponentSystem
+    {
+        
+        /// <summary>
+        /// Group of component to use
+        /// </summary>
+        private EntityQuery Group { get; set; }
+        
+        /// <inheritdoc />
+        protected override void OnCreateManager()
+        {
+            base.OnCreateManager();
+            Group = GetEntityQuery(
+                ComponentType.ReadOnly<Weapon>(), 
+                ComponentType.ReadOnly<PlayerWeapon>(),
+                ComponentType.Exclude<Firing>());
+        }
+
+        /// <inheritdoc />
+        protected override void OnUpdate()
+        {
+            /*if (!CrossPlatformInputManager.GetButtonDown("Fire1")) return;
+            
+            var entities = Group.ToEntityArray(Allocator.TempJob);
+            var weapons = Group.ToComponentArray<Weapon>();
+
+            for (var i = 0; i < entities.Length; ++i)
+            {
+                var entity = entities[i];
+                var weapon = weapons[i];
+                
+                EntityManager.AddComponent(entity, ComponentType.ReadWrite<Firing>());
+                var firing = EntityManager.GetComponentObject<Firing>(entity);
+                firing.firedAt = Time.time;
+                firing.bulletPrefab = weapon.BulletPrefab;
+            }
+            
+            entities.Dispose();*/
+        }
+    }
 }

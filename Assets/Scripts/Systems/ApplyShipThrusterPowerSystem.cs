@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using Components;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Systems
@@ -7,7 +8,7 @@ namespace Systems
     {
         protected override void OnUpdate()
         {
-            Entities.ForEach((Ship ship, MovementDataComponent movementData) =>
+            /*Entities.ForEach((Ship ship, MovementDataComponent movementData) =>
             {
                 var powerRatio = movementData.Velocity.z / ship.Speed;
                 powerRatio *= Vector3.SignedAngle(ship.transform.forward, Vector3.forward, Vector3.up) >= 180f
@@ -25,7 +26,7 @@ namespace Systems
                 {
                     thruster.Power = powerRatio < 0f ? Mathf.Abs(powerRatio) : 0f;
                 }
-            });
+            });*/
         }
     }
 }

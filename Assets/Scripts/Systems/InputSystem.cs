@@ -1,4 +1,5 @@
 using Unity.Entities;
+using Unity.Jobs;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -8,13 +9,13 @@ namespace Systems
     /// Input system to handle player input
     /// </summary>
     public class InputSystem : ComponentSystem
-    {
+    {   
         protected override void OnUpdate()
         {
             var horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             var vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
-            Entities.ForEach((InputComponent input, Ship ship) =>
+            Entities.ForEach((ref PlayerInput input) =>
             {
                 input.Horizontal = horizontal;
                 input.Vertical = vertical;

@@ -1,6 +1,10 @@
 using UnityEngine;
 
-public class Firing : MonoBehaviour
+namespace Components.Weapons
 {
-    public float FiredAt;
+    public class Firing : MonoBehaviour
+    {
+        public GameObject bulletPrefab;
+        public float firedAt;
+    }
 }

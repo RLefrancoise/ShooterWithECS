@@ -39,4 +39,5 @@ sysinfo.txt
 Assets/Models/ModularSpaceships*
 .gradle/
 .idea/
-Assets/Plugins/Editor/JetBrains*
+Assets/EntityCache*
+Assets/StreamingAssets/EntityCache*

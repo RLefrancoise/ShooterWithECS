@@ -1,12 +1,39 @@
-﻿using Unity.Entities;
+﻿using Components;
+using Unity.Collections;
+using Unity.Entities;
+using Unity.Jobs;
+using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
 namespace Systems
 {
-    public class MovementDataSystem : ComponentSystem
+    public class MovementDataSystem : JobComponentSystem
     {
-        protected override void OnUpdate()
+        private struct MovementDataJob : IJobForEach<Translation, Rotation, MovementData, LocalToWorld>
+        {
+            public float DeltaTime;
+            
+            /// <inheritdoc />
+            public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref Rotation rotation, ref MovementData movementData, [ReadOnly] ref LocalToWorld localToWorld)
+            {
+                var worldPosition = localToWorld.Position;
+                
+                //Speed
+                if (!movementData.HasPreviousPosition)
+                {
+                    movementData.PreviousPosition = worldPosition;
+                    movementData.HasPreviousPosition = true;
+                }
+                else
+                {
+                    movementData.Velocity = (worldPosition - movementData.PreviousPosition) / DeltaTime;
+                    movementData.PreviousPosition = worldPosition;
+                }
+            }
+        }
+        
+        /*protected override void OnUpdate()
         {
             float dt = Time.deltaTime;
 
@@ -43,6 +70,15 @@ namespace Systems
                     movementData.PreviousRotation = rotation;
                 }
             });
+        }*/
+
+        /// <inheritdoc />
+        protected override JobHandle OnUpdate(JobHandle inputDeps)
+        {
+            return new MovementDataJob
+            {
+                DeltaTime = Time.deltaTime
+            }.Schedule(this, inputDeps);
         }
     }
 }

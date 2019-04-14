@@ -1,38 +1,41 @@
+using Components;
+using Unity.Burst;
+using Unity.Collections;
 using Unity.Entities;
+using Unity.Jobs;
+using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
-using UnityQuery;
 
 namespace Systems
 {
     [UpdateBefore(typeof(MovementDataSystem))]
     [UpdateAfter(typeof(InputSystem))]
-    public class PlayerMovementSystem : ComponentSystem
+    public class PlayerMovementSystem : JobComponentSystem
     {
-        protected override void OnUpdate()
+        [BurstCompile]
+        private struct PlayerMovementJob : IJobForEach<Translation, Rotation, Ship, PlayerInput>
         {
-            Entities.ForEach((InputComponent input, Transform transform, Ship ship) =>
+            public float DeltaTime;
+            
+            /// <inheritdoc />
+            public void Execute(ref Translation translation, ref Rotation rotation, [ReadOnly] ref Ship ship, [ReadOnly] ref PlayerInput playerInput)
             {
-                var movementVector = new Vector3(input.Horizontal, 0f, input.Vertical);
-                var movePosition = movementVector.normalized * ship.Speed * Time.deltaTime;
+                var movementVector = new float3(playerInput.Horizontal, 0f, playerInput.Vertical);
+                var movementDirection = math.normalizesafe(movementVector, float3.zero);
+                var movePosition = movementDirection * ship.Speed * DeltaTime;
 
-                transform.Translate(movePosition, Space.World);
-
-                //Player too far from the left or right
-                if (Mathf.Abs(transform.position.x) > Bootstrap.LevelLimits.extents.x)
-                {
-                    transform.position = transform.position.WithX(
-                        Bootstrap.LevelLimits.extents.x * (transform.position.x >= 0f ? 1f : -1f));
-                }
-
-                transform.localRotation = Quaternion.Euler(
-                    Vector3.Slerp(
-                        Vector3.zero,
-                        new Vector3(
-                            0f,
-                            0f,
-                            -1f * ship.TiltAngle * movementVector.normalized.x),
-                        Mathf.Abs(input.Horizontal)));
-            });
+                translation.Value += movePosition;
+            }
+        }
+        
+        /// <inheritdoc />
+        protected override JobHandle OnUpdate(JobHandle inputDeps)
+        {
+            return new PlayerMovementJob
+            {
+                DeltaTime = Time.deltaTime
+            }.Schedule(this, inputDeps);
         }
     }
 }

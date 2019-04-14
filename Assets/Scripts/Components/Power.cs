@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using Unity.Entities;
 
 namespace Components
 {
     [Serializable]
-    public struct MoveSpeed : IComponentData
+    public struct Power : IComponentData
     {
         public float Value;
     }

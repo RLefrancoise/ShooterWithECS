@@ -8,7 +8,7 @@ namespace Systems
     {
         protected override void OnUpdate()
         {
-            Entities.ForEach((ThrusterComponent thruster) =>
+            /*Entities.ForEach((ThrusterComponent thruster) =>
             {
                 var mainModule = thruster.GetComponent<ParticleSystem>().main;
 
@@ -24,7 +24,7 @@ namespace Systems
                 mainModule.startSize = Mathf.Lerp(thruster.OriginalStartSize * 0.3f, thruster.OriginalStartSize,
                     thruster.Power);
                 mainModule.startColor = Color.Lerp(thruster.MinColour, thruster.OriginalStartColor, thruster.Power);
-            });
+            });*/
         }
     }
 }

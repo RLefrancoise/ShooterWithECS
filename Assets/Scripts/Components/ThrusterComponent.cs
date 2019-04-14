@@ -1,18 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using Unity.Entities;
+using Unity.Mathematics;
 
 namespace Components
 {
-    [RequireComponent(typeof(ParticleSystem))]
-    public class ThrusterComponent : MonoBehaviour
+    [Serializable]
+    public struct ThrusterComponent : IComponentData
     {
-        [HideInInspector]
         public bool IsInitialized;
 
         public float OriginalStartSize;
         public float OriginalLifeTime;
-        public Color OriginalStartColor;
+        public float4 OriginalStartColor;
 
-        public Color MinColour;
+        public float4 MinColour;
         public float Power;
     }
 }

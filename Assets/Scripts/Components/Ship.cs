@@ -1,13 +1,14 @@
-using System;
-using Components;
-using UnityEngine;
+using Unity.Entities;
 
-public class Ship : MonoBehaviour
+namespace Components
 {
-    public float Life;
-    public float Power;
-    public float Speed;
-    public float TiltAngle;
-    public ThrusterComponent[] ForwardThrusters;
-    public ThrusterComponent[] BackThrusters;
+    public struct Ship : IComponentData
+    {
+        public float Life;
+        public float Power;
+        public float Speed;
+        public float TiltAngle;
+        /*public ThrusterComponent[] ForwardThrusters;
+        public ThrusterComponent[] BackThrusters;*/
+    }
 }

@@ -1,5 +1,8 @@
-using UnityEngine;
+using Unity.Entities;
 
-public class MoveForward : MonoBehaviour
-{    
+namespace Components
+{
+    public struct MoveForward : ISharedComponentData
+    {    
+    }
 }

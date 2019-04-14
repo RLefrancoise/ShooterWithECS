@@ -1,3 +1,4 @@
+using Components.Weapons;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
@@ -49,4 +50,19 @@ namespace Systems
     public class CleanupFiringBarrier : BarrierSystem
     {
     }*/
+
+    public class CleanupFiringSystem : ComponentSystem
+    {
+        /// <inheritdoc />
+        protected override void OnUpdate()
+        {
+            /*var currentTime = Time.time;
+            
+            Entities.ForEach((Entity entity, Weapon weapon, Firing firing) =>
+            {
+                if (currentTime - firing.firedAt < weapon.FireRate) return;
+                EntityManager.RemoveComponent<Firing>(entity);
+            });*/
+        }
+    }
 }

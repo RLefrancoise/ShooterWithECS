@@ -8,11 +8,11 @@ namespace Systems.UI
         /// <inheritdoc />
         protected override void OnUpdate()
         {
-            Entities.ForEach((HUD hud) =>
+            /*Entities.ForEach((HUD hud) =>
             {
                 hud.playerHealthBar.fillAmount = hud.playerHealth.Value / hud.playerShip.Life;
                 hud.playerPowerBar.fillAmount = hud.playerPower.Value / hud.playerShip.Power;
-            });
+            });*/
         }
     }
 }
