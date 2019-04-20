@@ -20,10 +20,10 @@ namespace Systems
             /// <inheritdoc />
             public void Execute(ref Rotation rotation, [ReadOnly] ref MovementData movementData, [ReadOnly] ref Ship ship)
             {                
-                var speedRatio = movementData.Velocity.x / ship.Speed;
+                var speedRatio = movementData.velocity.x / ship.speed;
                 speedRatio = math.clamp(speedRatio, -1f, 1f);
                 
-                var tiltAngle = math.radians(-1f * ship.TiltAngle * speedRatio);
+                var tiltAngle = math.radians(-1f * ship.tiltAngle * speedRatio);
                 rotation.Value = quaternion.Euler(new float3(0f, 0f, tiltAngle));
             }
         }

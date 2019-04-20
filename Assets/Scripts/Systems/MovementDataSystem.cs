@@ -10,26 +10,46 @@ namespace Systems
 {
     public class MovementDataSystem : JobComponentSystem
     {
-        private struct MovementDataJob : IJobForEach<Translation, Rotation, MovementData, LocalToWorld>
+        private struct MovementDataJob : IJobForEach<Translation, Rotation, MovementData/*, LocalToWorld*/>
         {
             public float DeltaTime;
             
             /// <inheritdoc />
-            public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref Rotation rotation, ref MovementData movementData, [ReadOnly] ref LocalToWorld localToWorld)
+            public void Execute([ReadOnly] ref Translation translation, [ReadOnly] ref Rotation rotation, ref MovementData movementData/*, [ReadOnly] ref LocalToWorld localToWorld*/)
             {
-                var worldPosition = localToWorld.Position;
+                var worldPosition = translation.Value;
                 
                 //Speed
-                if (!movementData.HasPreviousPosition)
+                if (!movementData.hasPreviousPosition)
                 {
-                    movementData.PreviousPosition = worldPosition;
-                    movementData.HasPreviousPosition = true;
+                    movementData.previousPosition = worldPosition;
+                    movementData.hasPreviousPosition = true;
                 }
                 else
                 {
-                    movementData.Velocity = (worldPosition - movementData.PreviousPosition) / DeltaTime;
-                    movementData.PreviousPosition = worldPosition;
+                    movementData.velocity = (worldPosition - movementData.previousPosition) / DeltaTime;
+                    movementData.previousPosition = worldPosition;
                 }
+                
+                //Angular speed
+                /*if (!movementData.HasPreviousRotation)
+                {
+                    movementData.PreviousRotation = rotation.Value;
+                    movementData.HasPreviousRotation = true;
+                }
+                else
+                {
+                    movementData.RotationDelta = math.mul(rotation.Value, math.inverse(movementData.PreviousRotation));
+                    
+                    Quaternion q = math.normalizesafe(movementData.RotationDelta);
+                    movementData.RotationDeltaEuler = q.eulerAngles;
+                    
+                    q.ToAngleAxis(out var angle, out var axis);
+                    movementData.AngularVelocity = axis * angle * (1.0f / DeltaTime);
+
+                    movementData.PreviousRotation = rotation.Value;
+                }*/
+                
             }
         }
         

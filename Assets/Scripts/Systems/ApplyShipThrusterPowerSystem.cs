@@ -8,25 +8,27 @@ namespace Systems
     {
         protected override void OnUpdate()
         {
-            /*Entities.ForEach((Ship ship, MovementDataComponent movementData) =>
+            Entities.ForEach((ref Thruster thruster, ref MovementData movementData) =>
             {
-                var powerRatio = movementData.Velocity.z / ship.Speed;
-                powerRatio *= Vector3.SignedAngle(ship.transform.forward, Vector3.forward, Vector3.up) >= 180f
+                var powerRatio = movementData.velocity.z / thruster.maxPower;
+                /*powerRatio *= Vector3.SignedAngle(ship.transform.forward, Vector3.forward, Vector3.up) >= 180f
                     ? -1f
-                    : 1f;
+                    : 1f;*/
                 if (powerRatio > 1f) powerRatio = 1f;
                 else if (powerRatio < -1f) powerRatio = -1f;
 
-                foreach (var thruster in ship.ForwardThrusters)
+                thruster.power = powerRatio;
+
+                /*for(var i = 0 ; i < ship.ForwardThrusters.Length ; ++i)
                 {
-                    thruster.Power = powerRatio > 0f ? powerRatio : 0f;
+                    ship.ForwardThrusters[i].Power = powerRatio > 0f ? powerRatio : 0f;
                 }
 
-                foreach (var thruster in ship.BackThrusters)
+                for(var i = 0 ; i < ship.BackThrusters.Length ; ++i)
                 {
-                    thruster.Power = powerRatio < 0f ? Mathf.Abs(powerRatio) : 0f;
-                }
-            });*/
+                    ship.BackThrusters[i].Power = powerRatio < 0f ? Mathf.Abs(powerRatio) : 0f;
+                }*/
+            });
         }
     }
 }

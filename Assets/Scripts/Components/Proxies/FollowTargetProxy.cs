@@ -17,12 +17,12 @@ namespace Components.Proxies
         {
             var data = new FollowTarget
             {
-                TargetPosition = target ? new float3(target.position) : new float3(),
-                TargetRotation = target ? quaternion.Euler(target.rotation.eulerAngles) : quaternion.identity,
-                FreezeX = freezeX,
-                FreezeY = freezeY,
-                FreezeZ = freezeZ,
-                Offset = new float3(offset)
+                targetPosition = target ? new float3(target.position) : new float3(),
+                targetRotation = target ? quaternion.Euler(target.rotation.eulerAngles) : quaternion.identity,
+                freezeX = freezeX,
+                freezeY = freezeY,
+                freezeZ = freezeZ,
+                offset = new float3(offset)
             };
             
             dstManager.AddComponentData(entity, data);

@@ -6,6 +6,6 @@ namespace Components
     [Serializable]
     public struct MoveSpeed : IComponentData
     {
-        public float Value;
+        public float value;
     }
 }

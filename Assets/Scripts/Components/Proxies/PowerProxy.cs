@@ -10,7 +10,7 @@ namespace Components.Proxies
         /// <inheritdoc />
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            var data = new Power {Value = value};
+            var data = new Power {value = value};
             dstManager.AddComponentData(entity, data);
         }
     }

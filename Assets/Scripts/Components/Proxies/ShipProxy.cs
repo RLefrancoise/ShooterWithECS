@@ -13,7 +13,7 @@ namespace Components.Proxies
         /// <inheritdoc />
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            var data = new Ship{Life = life, Power = power, Speed = speed, TiltAngle = tiltAngle};
+            var data = new Ship{life = life, power = power, speed = speed, tiltAngle = tiltAngle};
             dstManager.AddComponentData(entity, data);
         }
     }

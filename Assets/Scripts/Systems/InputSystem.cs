@@ -17,8 +17,8 @@ namespace Systems
 
             Entities.ForEach((ref PlayerInput input) =>
             {
-                input.Horizontal = horizontal;
-                input.Vertical = vertical;
+                input.horizontal = horizontal;
+                input.vertical = vertical;
             });
         }
     }

@@ -7,10 +7,10 @@ namespace Components.Weapons
     [Serializable]
     public struct Weapon : IComponentData
     {
-        public Entity BulletPrefab;
-        public float FireSpeed;
-        public float FireRate;
-        public float BulletLifeTime;
-        public float Range;
+        public Entity bulletPrefab;
+        public float fireSpeed;
+        public float fireRate;
+        public float bulletLifeTime;
+        public float range;
     }
 }

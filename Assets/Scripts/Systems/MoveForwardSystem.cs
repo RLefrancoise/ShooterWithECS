@@ -16,7 +16,7 @@ namespace Systems
             /// <inheritdoc />
             public void Execute(ref Translation translation, ref Rotation rotation, ref MoveSpeed moveSpeed)
             {
-                translation.Value = translation.Value + moveSpeed.Value * math.forward(rotation.Value) * DeltaTime;
+                translation.Value = translation.Value + moveSpeed.value * math.forward(rotation.Value) * DeltaTime;
             }
         }
         

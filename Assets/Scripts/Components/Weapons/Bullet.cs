@@ -6,6 +6,6 @@ namespace Components.Weapons
     [Serializable]
     public struct Bullet : IComponentData
     {
-        public float LifeTime;
+        public float lifeTime;
     }
 }

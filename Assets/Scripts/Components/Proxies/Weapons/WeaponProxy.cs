@@ -25,11 +25,11 @@ namespace Components.Proxies.Weapons
         {
             var data = new Weapon
             {
-                BulletPrefab = conversionSystem.GetPrimaryEntity(bulletPrefab),
-                FireSpeed = fireSpeed,
-                FireRate = fireRate,
-                BulletLifeTime = bulletLifeTime,
-                Range = range
+                bulletPrefab = conversionSystem.GetPrimaryEntity(bulletPrefab),
+                fireSpeed = fireSpeed,
+                fireRate = fireRate,
+                bulletLifeTime = bulletLifeTime,
+                range = range
             };
             dstManager.AddComponentData(entity, data);
         }

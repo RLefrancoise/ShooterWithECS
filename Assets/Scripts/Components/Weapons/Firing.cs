@@ -1,10 +1,12 @@
-using UnityEngine;
+using System;
+using Unity.Entities;
 
 namespace Components.Weapons
 {
-    public class Firing : MonoBehaviour
+    [Serializable]
+    public struct Firing : IComponentData
     {
-        public GameObject bulletPrefab;
+        public Entity bulletPrefab;
         public float firedAt;
     }
 }

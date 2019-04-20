@@ -15,13 +15,13 @@ namespace Systems
             /// <inheritdoc />
             public void Execute(ref Translation translation, ref FollowTarget followTarget)
             {
-                var position = followTarget.TargetPosition;
+                var position = followTarget.targetPosition;
                 
-                if (!followTarget.FreezeX) position.x = followTarget.TargetPosition.x;
-                if (!followTarget.FreezeY) position.y = followTarget.TargetPosition.y;
-                if (!followTarget.FreezeZ) position.z = followTarget.TargetPosition.z;
+                if (!followTarget.freezeX) position.x = followTarget.targetPosition.x;
+                if (!followTarget.freezeY) position.y = followTarget.targetPosition.y;
+                if (!followTarget.freezeZ) position.z = followTarget.targetPosition.z;
 
-                translation.Value = position + followTarget.Offset;
+                translation.Value = position + followTarget.offset;
             }
         }
         

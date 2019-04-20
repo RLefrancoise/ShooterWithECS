@@ -11,7 +11,7 @@ namespace Components.Proxies.Weapons
         /// <inheritdoc />
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            var data = new Bullet{LifeTime = lifeTime};
+            var data = new Bullet{lifeTime = lifeTime};
             dstManager.AddComponentData(entity, data);
         }
     }

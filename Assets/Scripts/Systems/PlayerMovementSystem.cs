@@ -21,9 +21,9 @@ namespace Systems
             /// <inheritdoc />
             public void Execute(ref Translation translation, ref Rotation rotation, [ReadOnly] ref Ship ship, [ReadOnly] ref PlayerInput playerInput)
             {
-                var movementVector = new float3(playerInput.Horizontal, 0f, playerInput.Vertical);
+                var movementVector = new float3(playerInput.horizontal, 0f, playerInput.vertical);
                 var movementDirection = math.normalizesafe(movementVector, float3.zero);
-                var movePosition = movementDirection * ship.Speed * DeltaTime;
+                var movePosition = movementDirection * ship.speed * DeltaTime;
 
                 translation.Value += movePosition;
             }

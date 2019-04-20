@@ -21,19 +21,19 @@ namespace Systems
             {
                 float3 direction;
                 
-                if (lookAtTarget.KeepWorldUp)
+                if (lookAtTarget.keepWorldUp)
                 {
-                    var targetPositionWithSameY = new float3(lookAtTarget.TargetWorldPosition.x, translation.Value.y, lookAtTarget.TargetWorldPosition.z);
+                    var targetPositionWithSameY = new float3(lookAtTarget.targetWorldPosition.x, translation.Value.y, lookAtTarget.targetWorldPosition.z);
                     direction = math.normalize(targetPositionWithSameY - translation.Value);
                 }
                 else
                 {
-                    direction = math.normalize(lookAtTarget.TargetWorldPosition - translation.Value);
+                    direction = math.normalize(lookAtTarget.targetWorldPosition - translation.Value);
                 }
                 
                 rotation.Value = math.mul(quaternion.LookRotation(direction, math.up()).value, worldToLocal.Value);
 
-                switch (lookAtTarget.LookAtAxis)
+                switch (lookAtTarget.lookAtAxis)
                 {
                     case LookAtTarget.Axis.X:
                         rotation.Value = math.mul(rotation.Value, quaternion.Euler(0f, math.radians(-90f), 0f));

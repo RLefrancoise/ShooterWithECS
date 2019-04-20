@@ -7,14 +7,15 @@ namespace Components
     [Serializable]
     public struct MovementData : IComponentData
     {
-        public float3 PreviousPosition;
-        public quaternion PreviousRotation;
+        public float3 previousPosition;
+        public quaternion previousRotation;
 
-        public bool HasPreviousPosition;
-        public bool HasPreviousRotation;
+        public bool hasPreviousPosition;
+        public bool hasPreviousRotation;
 
-        public float3 Velocity;
-        public float3 AngularVelocity;
-        public quaternion RotationDelta;
+        public float3 velocity;
+        public float3 angularVelocity;
+        public quaternion rotationDelta;
+        public float3 rotationDeltaEuler;
     }
 }

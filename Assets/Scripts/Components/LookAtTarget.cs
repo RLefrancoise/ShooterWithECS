@@ -14,8 +14,8 @@ namespace Components
             X, Y, Z, MinusX, MinusY, MinusZ
         }
 
-        public Axis LookAtAxis;
-        public bool KeepWorldUp;
-        public float3 TargetWorldPosition;
+        public Axis lookAtAxis;
+        public bool keepWorldUp;
+        public float3 targetWorldPosition;
     }
 }

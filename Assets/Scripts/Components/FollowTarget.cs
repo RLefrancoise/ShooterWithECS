@@ -8,13 +8,13 @@ namespace Components
     [Serializable]
     public struct FollowTarget : IComponentData
     {
-        public float3 TargetPosition;
-        public quaternion TargetRotation;
+        public float3 targetPosition;
+        public quaternion targetRotation;
         
-        public bool FreezeX;
-        public bool FreezeY;
-        public bool FreezeZ;
+        public bool freezeX;
+        public bool freezeY;
+        public bool freezeZ;
 
-        public float3 Offset;
+        public float3 offset;
     }
 }

@@ -1,52 +1,44 @@
-﻿using Unity.Collections;
+﻿using Components.Weapons;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using UnityEngine;
 
 namespace Systems
 {
-    /*public class BulletCleanupSystem : JobComponentSystem
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    public class BulletCleanupSystem : JobComponentSystem
     {
-        private struct BulletCleanupJob : IJobParallelFor
+        private struct BulletCleanupJob : IJobForEachWithEntity<Bullet>
         {
-            [ReadOnly] public EntityArray Entities;
-            public ComponentDataArray<Bullet> Bullets;
             public float DeltaTime;
-            public EntityCommandBuffer.Concurrent EntityCommandBuffer;
+            [ReadOnly] public EntityCommandBuffer EntityCommandBuffer;
 
-            public void Execute(int index)
+            /// <inheritdoc />
+            public void Execute(Entity entity, int index, ref Bullet bullet)
             {
-                var bullet = Bullets[index];
-                bullet.LifeTime -= DeltaTime;
-                Bullets[index] = bullet;
-
-                if(Bullets[index].LifeTime <= 0f) EntityCommandBuffer.DestroyEntity(index, Entities[index]);
+                bullet.lifeTime -= DeltaTime;
+                if(bullet.lifeTime <= 0f) EntityCommandBuffer.DestroyEntity(entity);
             }
         }
 
+        private BeginInitializationEntityCommandBufferSystem _entityCommandBufferSystem;
+        
+        protected override void OnCreateManager()
+        {
+            _entityCommandBufferSystem = World.GetOrCreateSystem<BeginInitializationEntityCommandBufferSystem>();
+        }
+        
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
-            return new BulletCleanupJob
+            var job = new BulletCleanupJob
             {
-                Entities = _data.Entities,
-                Bullets = _data.Bullets,
                 DeltaTime = Time.deltaTime,
-                EntityCommandBuffer = _barrier.CreateCommandBuffer().ToConcurrent()
-            }.Schedule(_data.Length, 64, inputDeps);
+                EntityCommandBuffer = _entityCommandBufferSystem.CreateCommandBuffer()
+            }.Schedule(this, inputDeps);
+            
+            _entityCommandBufferSystem.AddJobHandleForProducer(job);
+            return job;
         }
-
-        private struct Data
-        {
-            public readonly int Length;
-            public EntityArray Entities;
-            public ComponentDataArray<Bullet> Bullets;
-        }
-
-        [Inject] private Data _data;
-        [Inject] private BulletCleanupBarrier _barrier;
     }
-
-    public class BulletCleanupBarrier : BarrierSystem
-    {
-    }*/
 }

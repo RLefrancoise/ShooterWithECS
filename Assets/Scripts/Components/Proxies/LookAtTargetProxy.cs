@@ -12,7 +12,7 @@ namespace Components.Proxies
         /// <inheritdoc />
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            var data = new LookAtTarget{LookAtAxis = lookAtAxis, KeepWorldUp = keepWorldUp, TargetWorldPosition = target.position};
+            var data = new LookAtTarget{lookAtAxis = lookAtAxis, keepWorldUp = keepWorldUp, targetWorldPosition = target.position};
             dstManager.AddComponentData(entity, data);
         }
     }
