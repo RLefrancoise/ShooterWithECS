@@ -14,12 +14,12 @@ namespace Systems
     public class PlayerMovementSystem : JobComponentSystem
     {
         [BurstCompile]
-        private struct PlayerMovementJob : IJobForEach<Translation, Rotation, Ship, PlayerInput>
+        private struct PlayerMovementJob : IJobForEach<Translation, Ship, PlayerInput>
         {
             public float DeltaTime;
             
             /// <inheritdoc />
-            public void Execute(ref Translation translation, ref Rotation rotation, [ReadOnly] ref Ship ship, [ReadOnly] ref PlayerInput playerInput)
+            public void Execute(ref Translation translation, [ReadOnly] ref Ship ship, [ReadOnly] ref PlayerInput playerInput)
             {
                 var movementVector = new float3(playerInput.horizontal, 0f, playerInput.vertical);
                 var movementDirection = math.normalizesafe(movementVector, float3.zero);

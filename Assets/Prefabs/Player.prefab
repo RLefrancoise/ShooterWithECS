@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4033203018033090}
   - component: {fileID: 3102621481891738442}
+  - component: {fileID: 4564325053663959219}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -45,10 +46,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 938072401336967070, guid: 45e611eb2a2dc0a439726ef245c62c67,
     type: 3}
-  fireSpeed: 5
-  fireRate: 1
+  fireSpeed: 15
+  fireRate: 0.2
   bulletLifeTime: 5
   range: 20
+--- !u!114 &4564325053663959219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026294717694142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be08be6c41234df3993ab46142ac7ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1975525094370160
 GameObject:
   m_ObjectHideFlags: 0

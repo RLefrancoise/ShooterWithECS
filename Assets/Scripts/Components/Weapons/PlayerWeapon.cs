@@ -1,6 +1,8 @@
-using UnityEngine;
+using System;
+using Unity.Entities;
 
 namespace Components.Weapons
 {
-    public class PlayerWeapon : MonoBehaviour {}
+    [Serializable]
+    public struct PlayerWeapon : ISharedComponentData {}
 }

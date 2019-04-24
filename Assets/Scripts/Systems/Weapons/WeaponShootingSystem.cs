@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Components.Weapons;
 using Unity.Collections;
 using Unity.Entities;
@@ -7,10 +10,10 @@ using UnityEngine;
 namespace Systems
 {
     /// <summary>
-    /// Weapon shooting system template
+    /// Weapon shooting system base system
     /// </summary>
     [UpdateInGroup(typeof(SimulationSystemGroup))]
-    public class WeaponShootingSystem : JobComponentSystem
+    public abstract class WeaponShootingSystem : JobComponentSystem
     {
         /// <summary>
         /// Weapon shooting job
@@ -23,6 +26,8 @@ namespace Systems
             /// <inheritdoc />
             public void Execute(Entity entity, int index, [ReadOnly] ref Weapon weapon)
             {
+                if (!weapon.canFire) return;
+                
                 EntityCommandBuffer.AddComponent(entity, new Firing
                 {
                     bulletPrefab = weapon.bulletPrefab,
@@ -36,15 +41,21 @@ namespace Systems
         /// <summary>
         /// Group of component to use
         /// </summary>
-        private EntityQuery Group { get; set; }
+        protected EntityQuery Group { get; set; }
+        protected abstract ComponentType[] AdditionalComponentTypes { get; }
         
         protected override void OnCreateManager()
         {
             _entityCommandBufferSystem = World.GetOrCreateSystem<BeginInitializationEntityCommandBufferSystem>();
-            
-            Group = GetEntityQuery(
+
+            var componentTypes = new List<ComponentType>()
+            {
                 ComponentType.ReadOnly<Weapon>(),
-                ComponentType.Exclude<Firing>());
+                ComponentType.Exclude<Firing>()
+            };
+            componentTypes.AddRange(AdditionalComponentTypes);
+            
+            Group = GetEntityQuery(componentTypes.ToArray());
         }
 
         protected override JobHandle OnUpdate(JobHandle inputDeps)

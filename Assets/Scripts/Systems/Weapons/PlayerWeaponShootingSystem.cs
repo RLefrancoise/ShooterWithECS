@@ -1,17 +1,14 @@
-﻿using Unity.Entities;
-using UnityStandardAssets.CrossPlatformInput;
+﻿using Components.Weapons;
+using Unity.Entities;
 
 namespace Systems
 {
-    /*public class PlayerWeaponShootingSystem : WeaponShootingSystem<PlayerWeaponShootingBarrier>
+    /// <inheritdoc />
+    /// <summary>
+    /// Player weapon shooting system.
+    /// </summary>
+    public class PlayerWeaponShootingSystem : WeaponShootingSystem
     {
-        [Inject] private PlayerWeaponShootingBarrier _barrier;
-
-        protected override ComponentGroup Group { get; set; }
-        protected override PlayerWeaponShootingBarrier Barrier => _barrier;
-        protected override bool CanShoot => CrossPlatformInputManager.GetButton("Fire1");
-        protected override ComponentType WeaponKind => ComponentType.ReadOnly<PlayerWeapon>();
+        protected override ComponentType[] AdditionalComponentTypes { get; } = { ComponentType.ReadOnly<PlayerWeapon>() };
     }
-
-    public class PlayerWeaponShootingBarrier : BarrierSystem { }*/
 }

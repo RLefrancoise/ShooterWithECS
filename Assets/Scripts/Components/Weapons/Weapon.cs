@@ -12,5 +12,6 @@ namespace Components.Weapons
         public float fireRate;
         public float bulletLifeTime;
         public float range;
+        public bool canFire;
     }
 }
